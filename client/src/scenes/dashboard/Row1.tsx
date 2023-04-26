@@ -1,3 +1,4 @@
+import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
 import { useGetKpisQuery } from "@/state/api";
 import { useTheme } from "@mui/material";
@@ -33,16 +34,21 @@ const Row1 = (props: Props) => {
   return (
     <>
       <DashboardBox gridArea="a">
+        <BoxHeader 
+        title="Revenue and Expenses"
+        subtitle ="top line represents revenue, bottom line represents expenses"
+        sideText ="+4%"
+        />
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             width={500}
             height={400}
             data={revenueExpenses}
             margin={{
-              top: 10,
-              right: 30,
-              left: 0,
-              bottom: 0,
+              top: 15,
+              right: 25,
+              left: -10,
+              bottom: 60,
             }}
           >
             <defs>
@@ -55,7 +61,19 @@ const Row1 = (props: Props) => {
                 <stop
                   offset="95%"
                   stopColor={palette.primary.main[300]}
+                  stopOpacity={0}
+                />
+              </linearGradient>
+              <linearGradient id="colorExpenses" x1="0" y1="0" x2="0" y2="1">
+                <stop
+                  offset="5%"
+                  stopColor={palette.primary.main[300]}
                   stopOpacity={0.5}
+                />
+                <stop
+                  offset="95%"
+                  stopColor={palette.primary.main[300]}
+                  stopOpacity={0}
                 />
               </linearGradient>
             </defs>
